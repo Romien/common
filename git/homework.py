@@ -56,8 +56,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
 
     if isinstance(first_value, int) and isinstance(second_value, int):
         return first_value * second_value
-    else:
-        raise ValueError
+    raise ValueError
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
