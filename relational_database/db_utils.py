@@ -2,12 +2,13 @@ from os import listdir
 
 import psycopg2
 import os
-from relational_database.config import FIXTURES_PATH
+from config import FIXTURES_PATH
 
 
 def init_tables(cur: psycopg2.connect) -> None:
     fixtures_init_path = os.path.join(FIXTURES_PATH, "init")
-    fixtures = [os.path.join(fixtures_init_path, f) for f in listdir(fixtures_init_path)]
+    fixtures = [os.path.join(fixtures_init_path, f)
+                for f in listdir(fixtures_init_path)]
     for fixture in fixtures:
         with open(fixture, 'r') as f:
             sql = f.read().strip()
@@ -23,7 +24,8 @@ def drop_tables(cur: psycopg2.connect) -> None:
 
 def fill_tables(cur: psycopg2.connect) -> None:
     fixtures_init_path = os.path.join(FIXTURES_PATH, "fill")
-    fixtures = [os.path.join(fixtures_init_path, f) for f in listdir(fixtures_init_path)]
+    fixtures = [os.path.join(fixtures_init_path, f)
+                for f in listdir(fixtures_init_path)]
     for fixture in fixtures:
         with open(fixture, 'r') as f:
             sql = f.read().strip()
