@@ -57,15 +57,15 @@ def task_5_min_value_strings(data: List[Union[str, int]]) -> str:
     Find the longest string
     """
 
-    # Якщо список не пустий
+    # If the list is empty
     if data:
-        # Пробігтися по списку та зробити всі його елементи типу STR
+        # Loop through it and turn all its elements to str type 
         new_data = list(map(lambda x: str(x), data))
-        # Знайти найменший по довжині елемент та повернути його
+        # Find the the shortest element and return it
         return min(new_data, key=len)
-    # Інакше якщо список пустий
+    # Else if the list is empty
     else:
-        # Просто повернути його назад
+        # Just return it
         return None
 
 
