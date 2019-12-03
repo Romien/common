@@ -6,26 +6,26 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
-from relational_database.config import TEST_DATABASE, DATABASE, FIXTURES_PATH
-from relational_database.db_utils import init_tables, clear_tables, fill_tables, drop_tables
-from relational_database.homework import \
-    (task_1_add_new_record_to_db,
-     task_2_list_all_customers,
-     task_3_list_customers_in_germany,
-     task_4_update_customer,
-     task_5_delete_the_last_customer,
-     task_6_list_all_supplier_countries,
-     task_7_list_supplier_countries_in_desc_order,
-     task_8_count_customers_by_city,
-     task_9_count_customers_by_country_with_than_10_customers,
-     task_10_list_first_10_customers,
-     task_11_list_customers_starting_from_11th,
-     task_12_list_suppliers_from_specified_countries,
-     task_13_list_products_from_sweden_suppliers,
-     task_14_list_products_with_supplier_information,
-     task_15_list_customers_with_any_order_or_not,
-     task_16_match_all_customers_and_suppliers_by_country
-     )
+from config import TEST_DATABASE, DATABASE, FIXTURES_PATH
+from db_utils import init_tables, clear_tables, fill_tables, drop_tables
+from homework import (
+    task_1_add_new_record_to_db,
+    task_2_list_all_customers,
+    task_3_list_customers_in_germany,
+    task_4_update_customer,
+    task_5_delete_the_last_customer,
+    task_6_list_all_supplier_countries,
+    task_7_list_supplier_countries_in_desc_order,
+    task_8_count_customers_by_city,
+    task_9_count_customers_by_country_with_than_10_customers,
+    task_10_list_first_10_customers,
+    task_11_list_customers_starting_from_11th,
+    task_12_list_suppliers_from_specified_countries,
+    task_13_list_products_from_sweden_suppliers,
+    task_14_list_products_with_supplier_information,
+    task_15_list_customers_with_any_order_or_not,
+    task_16_match_all_customers_and_suppliers_by_country
+)
 
 
 class TestSQLQueries(unittest.TestCase):
@@ -43,7 +43,6 @@ class TestSQLQueries(unittest.TestCase):
             if cursor.fetchone():
                 cursor.execute(f"DROP ROLE {user}")
             conn.commit()
-
 
     @staticmethod
     def create_test_database_and_role(conn):
@@ -151,7 +150,8 @@ class TestSQLQueries(unittest.TestCase):
 
     def test_task_7(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            actual_result = task_7_list_supplier_countries_in_desc_order(cursor)
+            actual_result = task_7_list_supplier_countries_in_desc_order(
+                cursor)
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_7.json")
 
@@ -169,7 +169,8 @@ class TestSQLQueries(unittest.TestCase):
 
     def test_task_9(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            actual_result = task_9_count_customers_by_country_with_than_10_customers(cursor)
+            actual_result = task_9_count_customers_by_country_with_than_10_customers(
+                cursor)
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_9.json")
 
@@ -196,7 +197,8 @@ class TestSQLQueries(unittest.TestCase):
 
     def test_task_12(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            actual_result = task_12_list_suppliers_from_specified_countries(cursor)
+            actual_result = task_12_list_suppliers_from_specified_countries(
+                cursor)
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_12.json")
 
@@ -214,7 +216,8 @@ class TestSQLQueries(unittest.TestCase):
 
     def test_task_14(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            actual_result = task_14_list_products_with_supplier_information(cursor)
+            actual_result = task_14_list_products_with_supplier_information(
+                cursor)
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_14.json")
 
@@ -223,7 +226,8 @@ class TestSQLQueries(unittest.TestCase):
 
     def test_task_15(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            actual_result = task_15_list_customers_with_any_order_or_not(cursor)
+            actual_result = task_15_list_customers_with_any_order_or_not(
+                cursor)
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_15.json")
 
@@ -232,7 +236,8 @@ class TestSQLQueries(unittest.TestCase):
 
     def test_task_16(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            actual_result = task_16_match_all_customers_and_suppliers_by_country(cursor)
+            actual_result = task_16_match_all_customers_and_suppliers_by_country(
+                cursor)
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_16.json")
 
