@@ -46,7 +46,8 @@ class Rectangle:
         where a, b are height and width respectively
         :return:
         """
-        diagonal = math.sqrt(math.pow(self.height, 2) + math.pow(self.width, 2))
+        diagonal = math.sqrt(math.pow(self.height, 2) +
+                             math.pow(self.width, 2))
         return diagonal
 
     def get_radius_of_circumscribed_circle(self):
@@ -68,7 +69,8 @@ class Rectangle:
         :return:
         """
         if self.width != self.height:
-            raise ValueError("Can't inscribed circle in rectangle with such width and height")
+            raise ValueError(
+                "Can't inscribed circle in rectangle with such width and height")
         diagonal = self.get_rectangle_diagonal()
         radius = diagonal / 2 * math.sqrt(2)
         return radius
