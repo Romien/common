@@ -115,3 +115,4 @@ ENV/
 # mypy
 .mypy_cache/
 db.py
+.pytest_cache
