@@ -1,7 +1,7 @@
 import random
 import unittest
 
-from python_functionality.homework import (
+from homework import (
     task_4_min_value_integers,
     task_5_min_value_strings,
     task_6_min_value_list_of_dicts,
@@ -56,7 +56,8 @@ class MinTestCases(unittest.TestCase):
             {'age': 55, 'name': 'Frank'},
             {'age': 83, 'name': 'Homer'}
         ]
-        self.assertDictEqual(task_6_min_value_list_of_dicts(data=members, key='age'), members[4])
+        self.assertDictEqual(task_6_min_value_list_of_dicts(
+            data=members, key='age'), members[4])
 
     def test_task_6_empty_fields(self):
         members = [
@@ -70,7 +71,8 @@ class MinTestCases(unittest.TestCase):
             {'age': 55, 'name': 'Frank'},
             {'age': 83, 'name': 'Homer'}
         ]
-        self.assertDictEqual(task_6_min_value_list_of_dicts(data=members, key='age'), members[2])
+        self.assertDictEqual(task_6_min_value_list_of_dicts(
+            data=members, key='age'), members[2])
 
 
 class SumTestCases(unittest.TestCase):
@@ -178,7 +180,8 @@ class FilterTestCases(unittest.TestCase):
                       ]
         value_to_search = 'SuperMan'
         expected_result = [{'age': 31, 'name': 'SuperMan', 'sex': 'female'}]
-        actual_result = task_3_find_item_via_value(data=given_data, value=value_to_search)
+        actual_result = task_3_find_item_via_value(
+            data=given_data, value=value_to_search)
         self.assertListEqual(expected_result, actual_result)
 
 
